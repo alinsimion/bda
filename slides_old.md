@@ -550,7 +550,7 @@ Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML D
 ---
 foo: bar
 dragPos:
-  square: 691,32,167,_,-16
+  square: 596,46,167,_,-16
 ---
 
 # Draggable Elements
@@ -576,7 +576,7 @@ Double-click on the draggable elements to edit their positions.
 </v-drag>
 ```
 
-<v-drag pos="357,441,261,_">
+<v-drag pos="360,211,261,_,-39">
   <div text-center text-3xl border border-main rounded>
     Double-click me!
   </div>
@@ -590,7 +590,7 @@ Double-click on the draggable elements to edit their positions.
 <v-drag-arrow two-way />
 ```
 
-<v-drag-arrow pos="396,128,-54,57" two-way op70 />
+<v-drag-arrow pos="541,68,-54,57" two-way op70 />
 
 ---
 src: ./pages/imported-slides.md

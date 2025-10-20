@@ -6,9 +6,12 @@
     "build": "slidev build",
     "dev": "slidev --open",
     "export": "slidev export",
-    "build:mongo": "slidev build courses/mongo/slides.md --out dist/mongo",
-    "build:all": "npm run build:mongo",
-    "deploy": "npm run build:all && npx gh-pages -d courses/mongo/dist"
+    
+    "build:mongo": "slidev build courses/mongo/slides.md --out ~/Desktop/University/Predat/Prezentari/bda/dist/mongo --base /bda/mongo",
+    "build:elastic_kibana": "slidev build courses/elastic_kibana/slides.md --out ~/Desktop/University/Predat/Prezentari/bda/dist/elastic_kibana --base /bda/elastic_kibana",
+    "build:rabbit_prom_grafana": "slidev build courses/rabbit_prom_grafana/slides.md --out ~/Desktop/University/Predat/Prezentari/bda/dist/rabbit_prom_grafana --base /bda/rabbit_prom_grafana",
+    "build:all": "npm run build:mongo && npm run build:elastic_kibana && npm run build:rabbit_prom_grafana",
+    "deploy": "npm run build:all && npx gh-pages -d dist"
   },
   "dependencies": {
     "@slidev/cli": "^52.2.5",

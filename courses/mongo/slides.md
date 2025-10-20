@@ -34,6 +34,7 @@ layout: center
 ---
 
 
+
 MongoDB is a NoSQL, document-oriented database designed to handle unstructured or semi-structured data, often in large volumes and with high scalability needs. Instead of using tables and rows like a traditional relational database, MongoDB stores data in flexible, JSON-like documents within collections.
 
 
@@ -251,7 +252,7 @@ lines: true
 ---
 transition: slide-left
 
-class: text-start 
+class: text-start
 lines: true
 ---
 
@@ -261,8 +262,7 @@ lines: true
 - Different field types for the same field
 - Easier to evolve the data model over time
 - More flexibility for developers
-- <span v-mark.red="1">Potential</span> for data inconsistency if not managed properly
-
+- <span v-mark.red="1">Potential</span> for data inconsistency if not <span v-mark.red="1">managed properly
 
 ---
 transition: slide-up
@@ -985,24 +985,14 @@ layout: default
 ---
 transition: slide-left
 
-layout: default
-
-
+class: text-start
+lines: true
 ---
-# Mongo Software
 
-<br>
-
-- Mongo DB Atlas
-    - https://www.mongodb.com/atlas
-- Mongo Server
-    - https://www.mongodb.com/try/download/community
-- Mongo Compass
-    - https://www.mongodb.com/products/tools/compass
-- Mongo VS Extension
-    - https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode
-- Docker Image
-    - https://hub.docker.com/_/mongo
-- Mongo Shell
-
-
+# Schema
+- Not necessary to define the schema before inserting data (vs SQL)
+- Different documents in the same collection 
+- Different field types for the same field
+- Easier to evolve the data model over time
+- More flexibility for developers
+- <span v-mark.red="1">Potential</span> for data inconsistency if not <span v-mark.blue="2">managed</span> properly
