@@ -7,10 +7,8 @@ theme: default
 # some information about your slides (markdown enabled)
 title: MongoDB
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+  MongoDB
+  Simion Ciprian Alin
 # apply UnoCSS classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing
@@ -262,7 +260,7 @@ lines: true
 - Different field types for the same field
 - Easier to evolve the data model over time
 - More flexibility for developers
-- <span v-mark.red="1">Potential</span> for data inconsistency if not <span v-mark.red="1">managed properly
+- <span v-mark.red="1">Potential</span> for data inconsistency if not managed properly
 
 ---
 transition: slide-up
@@ -989,10 +987,17 @@ class: text-start
 lines: true
 ---
 
-# Schema
-- Not necessary to define the schema before inserting data (vs SQL)
-- Different documents in the same collection 
-- Different field types for the same field
-- Easier to evolve the data model over time
-- More flexibility for developers
-- <span v-mark.red="1">Potential</span> for data inconsistency if not <span v-mark.blue="2">managed</span> properly
+# Mongo Software Ecosystem
+ 
+- Mongo Atlas - cloud deployment of mongo 
+    - https://www.mongodb.com/atlas
+- Mongo Server - self hosted mongo server
+    - https://www.mongodb.com/try/download/community
+- Mongo Compass - GUI for a mongo deployment
+    - https://www.mongodb.com/products/tools/compass
+- Mongo VSCode extension (for playgrounds)
+    - https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode
+- Docker Image
+    - https://hub.docker.com/_/mongo
+- MongoSH - mongo shell
+
