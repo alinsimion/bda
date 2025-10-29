@@ -31,8 +31,6 @@ layout: center
 
 ---
 
-
-
 MongoDB is a NoSQL, document-oriented database designed to handle unstructured or semi-structured data, often in large volumes and with high scalability needs. Instead of using tables and rows like a traditional relational database, MongoDB stores data in flexible, JSON-like documents within collections.
 
 
@@ -44,11 +42,16 @@ layout: fact
 ---
 
 
-# No<span class="text-red-300">SQL</span>
+# No <span class="text-red-300">SQL </span>
 <div class="flex flex-row justify-center">
 <p>No  <span class="text-red-300">S</span>tructured <span class="text-red-300">Q</span>uery <span class="text-red-300">L</span>anguage</p>
 </div>
 
+<!-- 
+
+
+Defapt chiar este un limbaj structurat de interogare pentru ca are o sintaxa bine definita si reguli clare de interogare a datelor.
+ -->
 
 ---
 transition: slide-up
@@ -59,6 +62,8 @@ layout: fact
 # Relational or Non-Relational
 
 What does relational even mean?
+
+<!-- Chiar daca nu putem seta relatii intre tabele, putem face join-uri intre colectii folosind agregari astfel ca datele au relatii intre ele folosind ObjectIDs -->
 
 ---
 transition: slide-up
@@ -71,6 +76,14 @@ layout: fact
 JavaScript Object Notation
 (ackchually BSON)
 maxSize 16MB
+
+<!-- 
+
+JSON este un format usor de citit si scris pentru oameni, si usor de generat si parsare pentru masini.
+Care defapt este Binary JSON, o reprezentare binara a documentelor JSON care include tipuri de date suplimentare si este optimizata pentru performanta.
+Ce are ca dimensiune maxima 16MB
+ 
+-->
 
 
 ---
@@ -644,18 +657,7 @@ class: text-start
 ```
 </div>
 
-<div class="w-fit">
-- <code>$in</code> : In Array
-```javascript
-{ age: { $in: [25, 30, 35] } }
-```
-</div>  
-<div class="w-fit">
-- <code>$nin</code> : Not In Array
-```javascript
-{ age: { $nin: [25, 30, 35] } }
-```
-</div>
+
 
 
 </div>
@@ -758,7 +760,7 @@ class: text-start
 ---
 # Operators - Array
 
-<div class="grid grid-cols-1 gap-6"> 
+<div class="grid grid-cols-2 gap-6"> 
 
 <div class="w-fit">
 - <code>$all</code>: All Elements Match
@@ -767,21 +769,36 @@ class: text-start
 ```
 </div>
 
-<div v-click class="w-fit">
+<div class="w-fit">
 - <code>$elemMatch</code>: Element Match
 ```javascript
 { profile: { $elemMatch: { interests: "coding" } } }
 ```
 </div>
 
-<div v-click="2" class="w-fit">
+<div class="w-fit">
 - <code>$size</code>: Array Size
 ```javascript
 { interests: { $size: 3 } }
 ```
 </div>
 
+<div class="w-fit">
+- <code>$in</code> : In Array
+```javascript
+{ age: { $in: [25, 30, 35] } }
+```
+</div>  
+<div class="w-fit">
+- <code>$nin</code> : Not In Array
+```javascript
+{ age: { $nin: [25, 30, 35] } }
+```
 </div>
+
+</div>
+
+<!-- Ce face elem match? It allows you to specify multiple conditions on the elements of an array field, ensuring that at least one element in the array matches all the specified criteria. -->
 
 
 ---
@@ -867,8 +884,6 @@ class: text-start
 ---
 # Aggregation - Group 
 
-<div class="grid grid-cols-1 gap-6"> 
-
 <div class="grid grid-cols-2 gap-4">
 
 <div>
@@ -900,12 +915,12 @@ class: text-start
         orderCount: 1
     }
 ]
-``` 
-</div>
+```
 
 </div>
 
 </div>
+
 
 ---
 transition: slide-left
@@ -1001,3 +1016,11 @@ lines: true
     - https://hub.docker.com/_/mongo
 - MongoSH - mongo shell
 
+
+---
+transition: slide-up
+layout: end
+--- 
+
+# Thank you! 
+## Q&A
