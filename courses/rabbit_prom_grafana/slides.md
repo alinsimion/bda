@@ -88,24 +88,25 @@ layout: two-cols
 
 - Routing Key
 - Multiple bindings - fanout
-
-  <Excalidraw
-    drawFilePath="./rabbit_prom_grafana/assets/rabbit2.json"
-    class="w-[400px]"
-    :darkMode="true"
-    :background="false"
-  />
+<br/>
+<br/>
+<br/>
+<Excalidraw
+  drawFilePath="rabbit_prom_grafana/assets/rabbit1.json"
+  class="w-[400px]"
+  :darkMode="true"
+  :background="false"
+/>
 
 ::right::
-  <div class="flex flex-col items-center justify-center h-full">
-  
+<div class="flex flex-col items-center justify-center h-full">
   <Excalidraw
-    drawFilePath="./rabbit_prom_grafana/assets/rabbit1.json"
+    drawFilePath="rabbit_prom_grafana/assets/rabbit2.json"
     class="w-[400px]"
     :darkMode="true"
     :background="false"
   />
-  </div>
+</div>
 
 
 
@@ -126,7 +127,7 @@ layout: two-cols
 ::right::
 <div class="flex flex-col items-center justify-center h-full">
   <Excalidraw
-    drawFilePath="./rabbit_prom_grafana/assets/rabbit3.json"
+    drawFilePath="rabbit_prom_grafana/assets/rabbit3.json"
     class="w-[400px]"
     :darkMode="true"
     :background="false"
@@ -146,7 +147,7 @@ layout: two-cols
 ::right::
 <div class="flex flex-col items-center justify-center -ml-60 h-full">
   <Excalidraw
-    drawFilePath="./rabbit_prom_grafana/assets/rabbit4.json"
+    drawFilePath="rabbit_prom_grafana/assets/rabbit4.json"
     class="w-[600px]"
     :darkMode="true"
     :background="false"
@@ -198,7 +199,7 @@ transition: slide-up
 # Prometheus
 <div class="flex flex-col items-center justify-center h-full">
 <Excalidraw
-  drawFilePath="./rabbit_prom_grafana/assets/prom1.json"
+  drawFilePath="rabbit_prom_grafana/assets/prom1.json"
   class="w-[800px]"
   :darkMode="true"
   :background="false"
