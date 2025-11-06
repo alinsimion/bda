@@ -26,6 +26,7 @@
     ]
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
     "gh-pages": "^6.3.0"
   }
 }
