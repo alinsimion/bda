@@ -106,32 +106,37 @@ class: text-start
 |                     | Decimal128               |
 |                     | Date               | -->
 
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-2 gap-4">
 
 <div>
-    <div class="text-2xl font-extrabold"> JSON </div>
-    - String <br>
-    - Number <br>
-    - Object (JSON object) <br>
-    - Array <br>
-    - Boolean <br>
-    - Null
+<div class="text-2xl font-extrabold"> JSON </div>
+
+<br>
+
+- String 
+- Number 
+- Object (JSON object) 
+- Array 
+- Boolean 
+- Null
 
 </div>
 
 
 <div>
-   <div class="text-2xl font-extrabold"> BSON </div>
-    [JSON FIELDS]
-    + <br>
-    - Minkey <br>
-    - Maxkey <br>
-    - Binary Data <br>
-    - ObjectID <br>
-    - Regular Expression <br>
-    - JavaScript code <br>
-    - Decimal128 <br>
-    - Date
+<div class="text-2xl font-extrabold"> BSON </div>
+
+<br>
+
+- [JSON FIELDS]
+- Minkey 
+- Maxkey 
+- Binary Data 
+- ObjectID 
+- Regular Expression 
+- JavaScript code 
+- Decimal128 
+- Date
 </div>
 
 </div>
@@ -234,17 +239,6 @@ lines: true
 <br>
 <div class="grid grid-cols-2 gap-4">
 
-<div class="flex flex-col items-center justify-center">
-
-<div class="text-2xl font-extrabold"> SQL </div>
-
-<br>
-<div class="text-xl"> Necessary </div>
-
-<br>
-<div class="text-xl"> Strict </div>
-
-</div>
 
 
 <div class="flex flex-col items-center justify-center">
@@ -258,7 +252,229 @@ lines: true
 
 </div>
 
+<div class="flex flex-col items-center justify-center">
+<div class="text-2xl font-extrabold"> SQL </div>
+
+<br>
+<div class="text-xl"> Necessary </div>
+
+<br>
+<div class="text-xl"> Strict </div>
+
 </div>
+
+</div>
+
+
+---
+transition: slide-left
+
+class: text-start
+lines: true
+---
+
+# Dynamic data
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="flex flex-col ">
+
+```json
+{
+  "name": "Alice",
+  "age": 24,
+  "hobbies": ["climbing", "chess"]
+}
+```
+
+<div > User 2 </div>
+
+</div>
+
+<div class="flex flex-col ">
+
+```json
+{
+  "name": "Bob",
+  "company": "TechCorp",
+  "skills": ["Go", "Docker"],
+  "years_experience": 5
+}
+
+```
+<div > User 1 </div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="flex flex-col justify-center">
+
+<span>MongoDB</span>
+- No rigid schema migrations
+- Add new fields instantly
+- Great for <strong>early-stage</strong> development
+    
+</div>
+
+<div class="flex flex-col justify-center">
+
+<span>SQL</span>
+- Requires schema migrations
+- Many nullable fields
+- Multiple Join tables
+
+</div>
+</div>
+
+
+---
+transition: slide-left
+
+class: text-start
+lines: true
+---
+
+# Nested data
+
+<div class="grid grid-cols-2 gap-10">
+
+<div class="flex flex-col gap-2">
+<span class="font-bold">MongoDB</span>
+```json
+{
+  "title": "MongoDB Guide",
+  "author": "John",
+  "comments": [
+    { "user": "Alice", "text": "Great article!" },
+    { "user": "Bob", "text": "Very helpful!" }
+  ]
+}
+```
+
+<div class="text-gray-400"> one collection with posts </div>
+
+</div>
+
+<div class="flex flex-col">
+<span class="font-bold">SQL</span>
+
+<div class="bg-red-400 rounded-md m-1 p-1 w-min">posts</div>
+<div class="bg-red-400 rounded-md m-1 p-1 w-min">comments</div>
+<div class="bg-red-400 rounded-md m-1 p-1 w-min">users</div>
+
+<div class="text-gray-400"> 3 tables for each data type </div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="grid grid-cols-2 gap-10">
+
+<div class="flex flex-col justify-center">
+
+- Natural document structure
+- Comments stored with the post
+- <span v-mark.red>One query</span> fetches everything <div v-click class="text-xl text-green-400"> faster </div>
+
+
+</div>
+
+<div class="flex flex-col justify-center">
+
+- Join tables
+<br>
+or
+<br>
+- Join queries <div v-click class="text-xl text-red-400"> slower </div>
+
+</div>
+
+
+</div>
+
+---
+transition: slide-left
+
+class: text-start
+lines: true
+---
+
+# Inconsistent data
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="flex flex-col ">
+
+```json
+{
+  "name": "MacBook",
+  "ram": "16GB",
+  "cpu": "M3",
+  "battery": "18h"
+}
+```
+
+<div > User 2 </div>
+
+</div>
+
+<div class="flex flex-col ">
+
+```json
+{
+  "name": "Running Shoes",
+  "size": 42,
+  "material": "mesh"
+}
+```
+<div > User 1 </div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="flex flex-col ">
+
+<span>MongoDB</span>
+- Flexible product attributes
+- No schema explosion
+    
+</div>
+
+<div class="flex flex-col">
+
+<span>SQL</span>
+
+- Potentially <span v-mark.circle.red="1"> hundreds</span> of nullable columns
+or 
+- Entity Attribute Value (EAV) tables
+
+```md
+product_id | attribute | value
+--------------------------------
+1          | ram       | 16GB
+1          | cpu       | M3
+2          | size      | 42
+2          | material  | mesh
+
+```
+
+
+</div>
+</div>
+
+
 
 ---
 transition: slide-left
@@ -505,7 +721,6 @@ class: text-start
 ```
 
 - Skip
-
 ```javascript
     db.users.find(
         { status: "active" }
@@ -619,8 +834,11 @@ class: text-start
 # Operators - Comparison
 
 <div class="grid grid-cols-2 gap-y-8 gap-x-4"> 
-<div class="w-fit">
 
+
+<v-clicks>
+
+<div class="w-fit">
 - <code>$eq</code> : Equal To
 ```javascript
 { age: { $eq: 30 } }
@@ -657,7 +875,7 @@ class: text-start
 ```
 </div>
 
-
+</v-clicks>
 
 
 </div>
@@ -671,6 +889,8 @@ class: text-start
 # Operators - Logical
 
 <div class="grid grid-cols-1 gap-6"> 
+
+<v-clicks>
 
 <div class="w-fit">
 - <code>$and</code>: Logical AND
@@ -699,7 +919,7 @@ class: text-start
 { $nor: [ { age: { $lt: 25 } }, { age: { $gt: 35 } } ] }
 ```
 </div>
-
+</v-clicks>
 
 
 </div>
@@ -812,28 +1032,32 @@ class: text-start
 <div class="grid grid-cols-1 gap-6"> 
 
 <div class="grid grid-cols-2 gap-4">
-<div class="text-xs">
-    <div class="text-xl "> Orders </div>
+<div class="text-xs w-min">
 
+<div class="text-xl "> Orders </div>
+```md
 | _id | customerId | amount |
 |-----|------------|--------|
 | 1   | 101        | 250    |
 | 2   | 102        | 450    |
 | 3   | 101        | 300    |
-
+```
 </div>
-<div class="text-xs">
-    <div class="text-xl "> Users </div>
+<div class="text-xs w-min">
+<div class="text-xl "> Users </div>
 
-| _id | name        | email              |
-|-----|-------------|--------------------|
-| 101 | John Doe    |                    |
-| 102 | Jane Smith  |                    |
+```md
+| _id | name          | email              |
+|-----|---------------|--------------------|
+| 101 | John Doe      |                    |
+| 102 | Jane Smith    |                    |
 | 103 | Alice Johnson |                    |
-
+```
 </div>
 
-<div v-click>
+
+<div v-click class="w-min">
+<div class="text-xl "> Operation </div>
 ```javascript
     db.orders.aggregate([
         {
@@ -848,24 +1072,22 @@ class: text-start
 ```
 </div>
 
-<div v-click="2">
+<div v-click="2" class="w-min">
 
 ```json
-[ 
-    {
-        _id: 1,
-        customerId: 101,
-        amount: 250,
-        customerDetails: [
-            {
-                _id: 101,
-                name: "John Doe",
-                email: ""
-            }
-        ]
-    },
-    [/* more orders */]
-]
+[{
+    _id: 1,
+    customerId: 101,
+    amount: 250,
+    customerDetails: [
+        {
+            _id: 101,
+            name: "John Doe",
+            email: ""
+        }
+    ]
+},
+[/* more orders */]]
 ``` 
 </div>
 
@@ -943,7 +1165,221 @@ class: text-start
 ```
 </div>
 
+---
+transition: slide-left
 
+class: text-start 
+
+---
+# Indexes
+
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+
+- What is an Index? 
+    - O(n) without, O(log n) with
+
+
+<div class="w-min">
+<br>
+
+- Simple index
+
+```javascript
+db.users.createIndex({ email: 1 })
+```
+
+</div>
+
+<div class="w-min">
+<br>
+
+- Multi-field index
+
+```javascript
+db.users.createIndex({ user_id: 1, status: 1 })
+```
+</div>
+
+
+</div>
+
+<div>
+
+<div class="w-min">
+<br>
+
+- Nested-field index
+
+```javascript
+{
+  "name": "Alice",
+  "address": {
+    "city": "Paris",
+    "country": "France"
+  }
+}
+```
+
+<br>
+
+```javascript
+db.users.createIndex({ "address.city": 1 })
+```
+<br>
+
+> In SQL you would need an *Users table*, an *Adresses table* and then join them
+
+</div>
+
+</div>
+
+</div>
+
+
+---
+transition: slide-left
+
+class: text-start 
+
+---
+# Indexes - 2
+
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+
+
+<div class="flex flex-col gap-2 w-min">
+
+- Text index
+
+```javascript
+db.articles.createIndex({ content: "text" })
+
+```
+
+<div v-click="1">
+
+> MongoDB has *built-in* text search, whereas SQL does not
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div v-click="2" class="flex flex-col gap-2 w-min">
+
+- Partial index
+
+```javascript
+db.users.createIndex(
+  { email: 1 },
+  { partialFilterExpression: { active: true } }
+)
+```
+
+<div v-click="3">
+
+> This is helpful if you want to index only part of the data
+
+</div> 
+
+</div>
+
+</div>
+
+<div>
+
+<div v-click="4" class="flex flex-col gap-2 w-min">
+
+- Array index
+
+```javascript
+{
+  "name": "Alice",
+  "skills": ["Go", "Docker", "MongoDB"]
+}
+```
+
+```javascript
+db.users.createIndex({ skills: 1 })
+```
+
+<div v-click="5">
+
+> In SQL you would need to create a join table *user_skills*
+
+</div> 
+
+</div>
+
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+
+class: text-start 
+
+---
+# Scaling
+
+- Vertical Scaling
+    <div class="text-gray-400"> Add RAM, CPU, etc </div>
+- Horizontal Scaling
+    <div class="text-gray-400"> Add New Server</div>
+
+<br>
+
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="flex flex-col ">
+
+<span>MongoDB</span>
+
+<div v-click="1"> Built-in Sharding</div>
+<div v-click="3"> Self Contained Documents</div>
+
+</div>
+
+<div class="flex flex-col ">
+
+<span>SQL</span>
+
+<div v-click="2"> Joins over multiple machines</div>
+<div v-click="4"> Guarantees consistency</div>
+
+</div>
+
+</div>
+
+
+---
+transition: slide-left
+
+layout: default
+
+
+---
+# Sharding
+
+<br>
+
+- What is Sharding?
+- Why use Sharding?
+- Shard Key
+- Types of Sharding
+    - Range-Based Sharding
+    - Hash-Based Sharding
+    - Zone-Based Sharding
 
 ---
 transition: slide-left
@@ -975,24 +1411,7 @@ e2@{animate: true}
 
 ```
 
----
-transition: slide-left
 
-layout: default
-
-
----
-# Sharding
-
-<br>
-
-- What is Sharding?
-- Why use Sharding?
-- Shard Key
-- Types of Sharding
-    - Range-Based Sharding
-    - Hash-Based Sharding
-    - Zone-Based Sharding
 
 
 ---
