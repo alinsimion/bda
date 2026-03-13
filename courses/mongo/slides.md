@@ -484,12 +484,17 @@ lines: true
 ---
 
 # Schema
+
+<v-clicks>
+
 - Not necessary to define the schema before inserting data (vs SQL)
 - Different documents in the same collection 
 - Different field types for the same field
 - Easier to evolve the data model over time
 - More flexibility for developers
-- <span v-mark.red="1">Potential</span> for data inconsistency if not managed properly
+- <span v-mark.red="7">Potential</span> for data inconsistency if not managed properly
+
+</v-clicks>
 
 ---
 transition: slide-up
@@ -501,7 +506,7 @@ class: text-start
 # Create
 
 <div class="grid grid-cols-2 gap-4"> 
-<div>
+<div class="w-min">
 
 - Insert One
 ```javascript
@@ -521,7 +526,7 @@ class: text-start
 ```
 </div>
 
-<div>
+<div class="w-min">
 
 - Insert Many
 ```javascript
@@ -560,7 +565,7 @@ class: text-start
 # Read
 
 <div class="grid grid-cols-2 gap-4"> 
-<div>
+<div class="w-min">
 
 - Find One
 ```javascript
@@ -580,7 +585,7 @@ class: text-start
 ```
 </div>
 
-<div>
+<div class="w-min">
 
 - Find One and Update
 ```javascript
@@ -613,7 +618,7 @@ class: text-start
 # Update
 
 <div class="grid grid-cols-2 gap-4"> 
-<div>
+<div class="w-min">
 
 - Update One
 ```javascript
@@ -631,7 +636,7 @@ class: text-start
 ```
 </div>
 
-<div>
+<div class="w-min">
 
 - Update Many
 ```javascript
@@ -660,7 +665,7 @@ class: text-start
 # Delete
 
 <div class="grid grid-cols-2 gap-4"> 
-<div>
+<div class="w-min">
 
 - Delete One
 ```javascript
@@ -674,7 +679,7 @@ class: text-start
 ```
 </div>
 
-<div>
+<div class="w-min">
 
 - Delete Many
 ```javascript
@@ -701,7 +706,7 @@ class: text-start
 # Additional Operations - 1
 
 <div class="grid grid-cols-1 gap-4"> 
-<div>
+<div class="w-min">
 
 - Count Documents
 ```javascript
@@ -741,7 +746,7 @@ class: text-start
 # Additional Operations - 2
 
 <div class="grid grid-cols-1 gap-4"> 
-<div>
+<div class="w-min">
 
 - Sort
 ```javascript
@@ -776,7 +781,7 @@ class: text-start
 # Additional Operations - 3
 
 <div class="grid grid-cols-2 gap-4"> 
-<div>
+<div class="w-min">
 
 - Projection Additive
 ```javascript{all|4|all}{lines:true}
@@ -799,7 +804,7 @@ class: text-start
 
 </div>
 
-<div>
+<div class="w-min">
 
 - Projection Negative
 ```javascript{all|4,8,9|all}{lines:true}
@@ -1108,7 +1113,7 @@ class: text-start
 
 <div class="grid grid-cols-2 gap-4">
 
-<div>
+<div class="w-min">
 ```javascript
     db.orders.aggregate([
         {
@@ -1122,7 +1127,7 @@ class: text-start
 ```
 </div>
 
-<div v-click>
+<div v-click class="w-min">
 
 ```json
 [ 
@@ -1181,7 +1186,7 @@ class: text-start
     - O(n) without, O(log n) with
 
 
-<div class="w-min">
+<div v-click="1" class="w-min">
 <br>
 
 - Simple index
@@ -1192,7 +1197,7 @@ db.users.createIndex({ email: 1 })
 
 </div>
 
-<div class="w-min">
+<div v-click="2" class="w-min">
 <br>
 
 - Multi-field index
@@ -1207,7 +1212,7 @@ db.users.createIndex({ user_id: 1, status: 1 })
 
 <div>
 
-<div class="w-min">
+<div v-click="3"  class="w-min">
 <br>
 
 - Nested-field index
@@ -1371,15 +1376,88 @@ layout: default
 ---
 # Sharding
 
-<br>
+<div class="grid grid-cols-2 gap-4">
+
+<div>
 
 - What is Sharding?
 - Why use Sharding?
 - Shard Key
-- Types of Sharding
-    - Range-Based Sharding
-    - Hash-Based Sharding
-    - Zone-Based Sharding
+
+
+<br>
+
+<div v-click="1">
+
+- Zone-Based Sharding
+
+<br>
+
+```mermaid {theme: 'defult', scale: 0.4}
+flowchart LR
+
+    A["user_id:1001 | loc: EU"]
+    B["user_id:1002 | loc: US"]
+    C["user_id:1003 | loc: EU"]
+    D["user_id:1004 | loc: AP"]
+
+    S1[(Shard 1)]
+    S2[(Shard 2)]
+    S3[(Shard 3)]
+
+    A --> S3
+    B --> S1
+    C --> S3
+    D --> S2
+```
+</div>
+</div>
+<div>
+
+<div v-click="2">
+
+- Range based sharding
+
+```mermaid {theme: 'default', scale: 0.5}
+flowchart LR
+
+Chunk1["user_id 1 - 1000000"]
+Chunk2["user_id 1000001 - 2000000"]
+Chunk3["user_id 2001000 - 3000000"]
+
+Shard1[(Shard 1)]
+Shard2[(Shard 2)]
+Shard3[(Shard 3)]
+
+Chunk1 --> Shard1
+Chunk2 --> Shard2
+Chunk3 --> Shard3
+
+```
+</div>
+
+<br>
+
+<div v-click="3">
+
+- Hash based sharding
+
+```mermaid {theme: 'defult', scale: 0.4}
+flowchart LR
+
+    A["user_id:1001"] --> H1["hash(1001)=9321"]
+    B["user_id:1002"] --> H2["hash(1002)=1203"]
+    C["user_id:1003"] --> H3["hash(1003)=7788"]
+    D["user_id:1004"] --> H4["hash(1004)=4567"]
+
+    H1 --> S3[(Shard 3)]
+    H2 --> S1[(Shard 1)]
+    H3 --> S3
+    H4 --> S2[(Shard 2)]
+```
+</div>
+</div>
+</div>
 
 ---
 transition: slide-left
@@ -1400,7 +1478,7 @@ layout: two-cols
 <br>
 <br>
 
-```mermaid {theme: 'neutral', scale: 1}
+```mermaid {theme: 'default', scale: 1}
 flowchart TD
 A[Primary Node] e1@-- Replication -->B[Secondary Node 1]
 A e2@-- Replication -->C[Secondary Node 2]
@@ -1440,6 +1518,7 @@ lines: true
 transition: slide-up
 layout: end
 --- 
+
 
 # Thank you! 
 ## Q&A
